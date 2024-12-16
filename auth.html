@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>bookish buddy</title>
+    <link rel="icon" href="img/bookicon.svg">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="menu">
+                <div class="block_with_logo">
+                    <a href="index.html"><img src="./img/logo__dark.svg" alt="logo_name" class="logo"></a>
+                </div>
+                <nav>
+                    <ul class="ul__nav">
+                        <li><a href="index.html#about" class="a__header">О нас</a></li>
+                        <li><a href="index.html#questions" class="a__header">Вопросы</a></li>
+                        <li><a href="avt_reg.html" class="a__header">Личный кабинет</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <main class="main__avt__reg">
+        <section>
+            <div class="container">
+                <div class="card__tab">
+
+                    <div class="tab">
+                        <input checked id="tab-reg" name="tab-btn" type="radio" value="">
+                        <label for="tab-reg">Регистрация</label>
+                        <input id="tab-avt" name="tab-btn" type="radio" value="">
+                        <label for="tab-avt">Авторизация</label>
+                        <div class="tab-content" id="content-reg">
+                            <form action="#" method="post">
+                                <input type="text" placeholder="ФИО" class="reg_input" required></input>
+                                <input type="tel" placeholder="Номер телефона" class="reg_input" required></input>
+                                <input type="password" placeholder="Пароль" minlength="8" class="reg_input"
+                                    required></input>
+                                <input type="password" placeholder="Повтор пароля" minlength="8" class="reg_input"
+                                    required></input>
+                                <button type="submit" class="btn__tab">Зарегистрироваться</button>
+                        </div>
+                        <div class="tab-content" id="content-avt">
+                            <input type="tel" placeholder="Номер телефона" class="reg_input" required></input>
+                            <input type="password" placeholder="Пароль" minlength="8" class="reg_input"
+                                required></input>
+                            <button type="submit" class="btn__tab"><a href="profil.html" style="color: #F6F4F5; text-decoration: none;">Войти</a></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="container">
+            <div class="footer__slide">
+                <div class="menu">
+                    <div class="block_with_logo">
+                        <a href="index.html"><img src="./img/logo__white.svg" alt="logo_name" class="logo"></a>
+                    </div>
+                    <nav>
+                        <ul class="ul__nav">
+                            <li><a href="#about" class="a__footer">О нас</a></li>
+                            <li><a href="#questions" class="a__footer">Вопросы</a></li>
+                            <li><a href="profile.html" class="a__footer">Личный кабинет</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

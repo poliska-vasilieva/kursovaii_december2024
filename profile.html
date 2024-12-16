@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>bookish buddy</title>
+    <link rel="icon" href="img/bookicon.svg">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="menu">
+                <div class="block_with_logo">
+                    <a href="index.html"><img src="./img/logo__dark.svg" alt="logo_name" class="logo"></a>
+                </div>
+                <nav>
+                    <ul class="ul__nav">
+                        <li><a href="#about" class="a__header">О нас</a></li>
+                        <li><a href="#questions" class="a__header">Вопросы</a></li>
+                        <li><a href="profile.html" class="a__header">Личный кабинет</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section>
+        <div class="container">
+            <div class="profil">
+                <div class="profil__part1">
+                    <div class="circl"></div>
+                    <input type="text" id="name" placeholder="Имя" class="input__profil" />
+                    <input type="date" id="date" class="input__profil" />
+                </div>
+                <div class="profil__part2">
+                    <h2 class="title">Ваши литературные вкусы</h2>
+                    <form>
+                        <p class="block__about__text">Выберите предпочитаемые жанры:</p><br />
+                        <select multiple="multiple" style="width: 90%; height: auto;">
+                            <option value="Русская классика">Русская классика </option>
+                            <option value="Романы">Романы</option>
+                            <option value="Фэнтези">Фэнтези</option>
+                        </select>
+                    </form>
+                    <h2>Расскажите о своих любимых книгах</h2>
+                    <textarea id="about__client" name="about__client"></textarea>
+                    <p><a href="choice.html" class="promo__descr">Перейти к поиску книг</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer__slide">
+                <div class="menu">
+                    <div class="block_with_logo">
+                        <a href="index.html"><img src="./img/logo__white.svg" alt="logo_name" class="logo"></a>
+                    </div>
+                    <nav>
+                        <ul class="ul__nav">
+                            <li><a href="#about" class="a__footer">О нас</a></li>
+                            <li><a href="#questions" class="a__footer">Вопросы</a></li>
+                            <li><a href="profile.html" class="a__footer">Личный кабинет</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>
