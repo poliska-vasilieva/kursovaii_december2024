@@ -5,16 +5,18 @@ document.getElementById('registerButton').addEventListener('click', () => {
 
     let data = {
         username,
-        email, 
+        email,
         password
     }
-    
-    fetch('http://localhost:3000/register', {
+
+    console.log('lll')
+
+    fetch('/register', {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
             "Content-Type": "application/json"
         }
     })
-    .then(response => console.log(response))
+        .then(response => console.log(response))
 })

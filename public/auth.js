@@ -7,7 +7,7 @@ document.getElementById('loginButton').addEventListener('click', () => {
         password
     }
 
-    fetch('http://localhost:3000/login', {
+    fetch('/login', {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
