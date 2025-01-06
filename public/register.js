@@ -9,8 +9,6 @@ document.getElementById('registerButton').addEventListener('click', () => {
         password
     }
 
-    console.log('lll')
-
     fetch('/register', {
         method: "POST",
         body: JSON.stringify(data),

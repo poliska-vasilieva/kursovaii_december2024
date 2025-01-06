@@ -127,6 +127,12 @@ button:hover {
     justify-content: center;
 }
 
+.block__about__text {
+    text-align: center;
+    font-size: 20px;
+    color: #171717;
+}
+
 .block__about {
     display: flex;
     flex-direction: column;

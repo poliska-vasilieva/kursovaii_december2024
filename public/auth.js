@@ -24,7 +24,6 @@ document.getElementById('loginButton').addEventListener('click', () => {
             return
         }
 
-        alert('Вы зашли!')
-    })
+        window.location.href = '/profile'})
 })
 
