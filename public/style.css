@@ -98,8 +98,21 @@ button:hover {
     margin: 100px 0;
 }
 
-.questions {
+.questions, .profile {
     margin: 100px 0;
+}
+
+.search {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin: 20px auto;
+}
+
+.prof__sod {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .title {
@@ -256,9 +269,6 @@ li {
     justify-content: space-between;
     gap: 50px;
 }
-.for__margin {
-    margin-bottom: 40px;
-}
 
 .book__card {
     display: flex;
@@ -273,16 +283,16 @@ li {
     max-width: 215px;
 }
 
-.book__card__info, .review {
+.book__card__info {
     color: #171717;
 }
 
-.book__name, .name__client {    
+.book__name {    
     font-weight: 500;
     font-size: 27px;
 }
 
-.book__loginor, .review__client {
+.book__loginor  {
     font-size: 19px;
     margin: 20px 0;
 }
@@ -312,17 +322,6 @@ li {
 
     .li__contact {
         font-size: 22px;
-    }
-    
-    .reviews__block {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 30px;
-    }
-
-    .review {
-        max-width: 80%;
     }
 
     .book__about {
@@ -355,13 +354,6 @@ li {
     .block__about__img {
         width: 170px;
         height: 170px;
-    }
-
-    .block__contacts {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 30px;
     }
 
     .title {
@@ -411,20 +403,8 @@ li {
         gap: 30px;
     }
 
-    .review {
-        width: 340px;
-    }
-
-    .map {
-        display: none;
-    }
-
     .title {
         font-size: 35px;
-    }
-
-    .contacts {
-        padding: 50px 37px;
     }
 
     .li__contact {
@@ -433,9 +413,5 @@ li {
 
     .book__card {
         flex-direction: column;
-    }
-
-    div ul li {
-        font-size: 20px;
     }
 }
