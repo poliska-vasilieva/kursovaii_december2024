@@ -15,7 +15,7 @@ document.getElementById('loginButton').addEventListener('click', () => {
         }
     }).then(response => {
         if (response.status == 404) {
-            alert("Пользователь не найден")
+            alert("Пользователя не существует или данные введены неверно!")
             return
         }
 
@@ -24,6 +24,8 @@ document.getElementById('loginButton').addEventListener('click', () => {
             return
         }
 
-        window.location.href = '/profile'})
+        if (response.status == 200) {
+            window.location.href = '/profile';
+        };
+    })
 })
-

@@ -20,8 +20,11 @@ document.getElementById('registerButton').addEventListener('click', () => {
             alert("Аккаунт с такой почтой уже существует!")
             return
         }
+        if (response.status == 200) {
+            window.location.href = '/profile'
+        }
 
-        window.location.href = '/profile'
+
     });
 })
 

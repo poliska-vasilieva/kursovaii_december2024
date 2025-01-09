@@ -9,7 +9,7 @@ document.querySelector('#book__card__info').oninput = function () {
 
             if (text.search(searchVal) === -1) {
                 elem.classList.add('hide');
-                elem.innerHTML = elem.innerText; // Восстановление оригинального текста
+                elem.innerHTML = elem.innerText; 
             } else {
                 elem.classList.remove('hide');
                 let str = elem.innerText;
@@ -19,7 +19,7 @@ document.querySelector('#book__card__info').oninput = function () {
     } else {
         bookCardInfoItems.forEach(function (elem) {
             elem.classList.remove('hide');
-            elem.innerHTML = elem.innerText; // Восстановление оригинального текста
+            elem.innerHTML = elem.innerText;
         });
     }
 }
