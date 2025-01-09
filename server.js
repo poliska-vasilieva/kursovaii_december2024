@@ -46,9 +46,15 @@ app.get('/profile', (req, res) => {
 
 app.post('/register', async (request, response) => {
     const { username, email, password } = request.body;
-    await Account.create({ username, email, password })
-    response.sendStatus(200)
-})
+
+    const existingAccount = await Account.findOne({ where: { email: email } });
+    if (existingAccount) {
+        return response.status(409).send('Account with this email already exists.');
+    }
+
+    await Account.create({ username, email, password });
+    response.sendStatus(200);
+});
 
 app.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'auth.html'));
@@ -56,20 +62,20 @@ app.get('/login', (req, res) => {
 
 app.post('/login', async (request, response) => {
     const { email, password } = request.body;
-    let account = await Account.findOne({ where: { email: email } })
+    let account = await Account.findOne({ where: { email: email } });
     if (account == undefined || account == null) {
-        response.sendStatus(404)
-        return
+        response.sendStatus(404);
+        return;
     }
 
     if (account.password != password) {
-        response.sendStatus(400)
-        return
+        response.sendStatus(400);
+        return;
     }
 
-    response.sendStatus(200)
-})
+    response.sendStatus(200);
+});
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
-});
+}); 

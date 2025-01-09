@@ -15,6 +15,13 @@ document.getElementById('registerButton').addEventListener('click', () => {
         headers: {
             "Content-Type": "application/json"
         }
-    })
-        .then(response => console.log(response))
+    }).then(response => {
+        if (response.status == 409) {
+            alert("Аккаунт с такой почтой уже существует!")
+            return
+        }
+
+        window.location.href = '/profile'
+    });
 })
+
