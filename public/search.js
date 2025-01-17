@@ -9,7 +9,7 @@ document.querySelector('#book__card__info').oninput = function () {
 
             if (text.search(searchVal) === -1) {
                 elem.classList.add('hide');
-                elem.innerHTML = elem.innerText; 
+                elem.innerHTML = elem.innerText;
             } else {
                 elem.classList.remove('hide');
                 let str = elem.innerText;
@@ -27,3 +27,17 @@ document.querySelector('#book__card__info').oninput = function () {
 function insertMark(string, pos, len) {
     return string.slice(0, pos) + '<mark>' + string.slice(pos, pos + len) + '</mark>' + string.slice(pos + len);
 };
+
+$(document).ready(function () {
+    $('.addToPlans').click(function () {
+        const bookName = $(this).data('name');
+        const bookLoginor = $(this).data('loginor');
+        const bookImage = $(this).data('img');
+
+        let Plans = JSON.parse(localStorage.getItem('Plans')) || [];
+
+        Plans.push({ name: bookName, loginor: bookLoginor, img: bookImage });
+        localStorage.setItem('Plans', JSON.stringify(Plans));
+        alert(`${bookName} добавлено в список "Хочу прочесть"`);
+    });
+})
