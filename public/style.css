@@ -9,6 +9,19 @@ body {
     background-color: #F6F4F5;
 }
 
+.hint {
+    display: none;
+    font-size: 12px;
+    color: aqua;
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+}
+
+input:focus + .hint {
+    display: block;
+}
+
 .container {
     margin: 0 auto;
     max-width: 1110px;
