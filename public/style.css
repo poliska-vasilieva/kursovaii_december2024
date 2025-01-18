@@ -9,17 +9,12 @@ body {
     background-color: #F6F4F5;
 }
 
-.hint {
+.hide {
     display: none;
-    font-size: 12px;
-    color: aqua;
-    position: absolute;
-    bottom: -20px;
-    left: 0;
 }
 
-input:focus + .hint {
-    display: block;
+mark {
+    background-color: #E9724F;
 }
 
 .container {
@@ -290,6 +285,7 @@ li {
     background-color: #F2E8D3;
     padding: 40px;
     border-radius: 40px;
+    width: 100%;
 }
 
 .img__book {
@@ -308,6 +304,10 @@ li {
 .book__loginor  {
     font-size: 19px;
     margin: 20px 0;
+}
+
+.plans__slide {
+    margin: 50px 0;
 }
 
 .book__about {
