@@ -3,7 +3,7 @@ $(document).ready(function () {
 
     Plans.forEach((item, index) => {
         $('#Plans').append(
-            `<li class="second-item">
+            `<div class="second-item">
             <div class="block-cover">
                 <div class="book__card">
                     <div class="book__card__info">
@@ -12,12 +12,12 @@ $(document).ready(function () {
                     </div>
                 </div>
             </div>
-            </li>`
+            </div>`
         );
     });
 
     if (Plans.length === 0) {
-        $('#Plans').append('<li>Книги не добавлены</li>');
+        $('#Plans').append('<p>Книги не добавлены</p>');
     }
 
     $('#Plans').on('click', '.removeFromPlans', function () {
@@ -29,7 +29,7 @@ $(document).ready(function () {
         $(this).closest('li').remove();
 
         if (Plans.length === 0) {
-            $('#Plans').empty().append('<li>Книги не добавлены</li>');
+            $('#Plans').empty().append('<p>Книги не добавлены</p>');
         }
     });
 });

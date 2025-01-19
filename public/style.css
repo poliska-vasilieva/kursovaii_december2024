@@ -270,6 +270,11 @@ li {
     padding: 90px 0;
 }
 
+#loginForm {
+    display: flex;
+    flex-direction: column;
+}
+
 .block-cover {
     display: flex;
     flex-direction: row;
@@ -306,7 +311,7 @@ li {
     margin: 20px 0;
 }
 
-.plans__slide {
+.plans__slide, .choice {
     margin: 50px 0;
 }
 

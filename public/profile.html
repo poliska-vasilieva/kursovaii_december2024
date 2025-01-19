@@ -29,18 +29,64 @@
 
     <section class="profile">
         <div class="container">
-            <div class="prof__sod">
-                <h2>Ваш профиль, дорогой пользователь</h2>
-                <input type="text" id="username" placeholder="Имя" required>
-                <input type="email" id="email" placeholder="Email" required>
-                <input type="password" id="password" placeholder="Пароль" required>
+            <div class="prof__sod"> 
+                <h2>Ваш профиль, дорогой пользователь</h2> 
+                <input type="text" id="username" placeholder="Имя" required> 
+                <input type="email" id="email" placeholder="Email" required> 
+                <input type="password" id="currentPassword" placeholder="Текущий пароль" required> 
+                <input type="password" id="newPassword" placeholder="Новый пароль (оставьте пустым, если не хотите менять)"> 
+                <div> 
+                    <button id="saveButton">Сохранить изменения</button>
+                    <button id="ButtonLogOut">Выйти</button> 
+                </div>
                 <a href="search.html" class="a__avt">Искать книги</a>
                 <a href="readit.html" class="a__avt">Перейти в список прочитанных книг</a>
-                <a href="plans.html" class="a__avt">Перейти в список запланированных книг</a>
-                <div>
-                    <button id="ButtonLogOut">Выйти</button>
-                </div>
+                <a href="plans.html" class="a__avt">Перейти в список запланированных книг</a> 
             </div>
+            
+            <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const username = localStorage.getItem('username');
+                const email = localStorage.getItem('email');
+            
+                if (username) {
+                    document.getElementById('username').value = username;
+                }
+                if (email) {
+                    document.getElementById('email').value = email;
+                }
+            });
+            
+            document.getElementById('saveButton').addEventListener('click', async () => {
+                const username = document.getElementById('username').value;
+                const email = document.getElementById('email').value;
+                const currentPassword = document.getElementById('currentPassword').value; 
+                const newPassword = document.getElementById('newPassword').value; 
+            
+                const response = await fetch('/updateProfile', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ username, email, password: currentPassword, newPassword })
+                });
+            
+                if (response.ok) {
+                    localStorage.setItem('username', username);
+                    localStorage.setItem('email', email);
+                    alert('Данные успешно обновлены');
+                } else {
+                    alert('Ошибка при обновлении данных');
+                }
+            });
+            
+            document.getElementById('ButtonLogOut').addEventListener('click', () => {
+                localStorage.removeItem('username');
+                localStorage.removeItem('email');
+                window.location.href = '/login'; 
+            });
+            </script>
+            
         </div>
     </section>
 

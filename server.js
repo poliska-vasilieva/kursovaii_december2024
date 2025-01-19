@@ -60,21 +60,50 @@ app.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'auth.html'));
 });
 
-app.post('/login', async (request, response) => {
-    const { email, password } = request.body;
-    let account = await Account.findOne({ where: { email: email } });
-    if (account == undefined || account == null) {
-        response.sendStatus(404);
-        return;
+app.post('/login', async (request, response) => { 
+    const { email, password } = request.body; 
+    let account = await Account.findOne({ where: { email } }); 
+    
+    if (!account) { 
+        return response.sendStatus(404); 
     }
 
-    if (account.password != password) {
-        response.sendStatus(400);
-        return;
+    if (account.password !== password) { 
+        return response.sendStatus(400); 
     }
+
+    return response.json({ 
+        username: account.username, 
+        email: account.email,
+        password: account.password 
+    });
+});
+
+app.post('/updateProfile', async (request, response) => {
+    const { username, email, password, newPassword } = request.body; 
+    const account = await Account.findOne({ where: { email } });
+
+    if (!account) {
+        
+        return response.sendStatus(404);
+    }
+
+    // Проверяем, был ли изменен пароль
+    if (newPassword) {
+        // Проверяем текущий пароль
+        if (account.password !== password) {
+            return response.sendStatus(403); // Ошибка доступа, текущий пароль неверен
+        }
+        account.password = newPassword; // Обновляем пароль
+    }
+
+    account.username = username;
+    account.email = email;
+    await account.save();
 
     response.sendStatus(200);
 });
+
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);

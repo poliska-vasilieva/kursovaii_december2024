@@ -1,87 +1,62 @@
-document.querySelector('#book__card__info').oninput = function () {
-    let val = this.value.trim().toLowerCase(); // Сразу приводим к нижнему регистру
-    // let bookCardItems = document.querySelectorAll('.book__card__info'); // Все карточки
-    let cards = document.querySelectorAll('.book__card')
+document.querySelector('#book__card__info').oninput = debounce(function () {
+    let val = this.value.trim().toLowerCase();
+    let cards = document.querySelectorAll('.book__card');
 
-    for (let i = 0; i < cards.length; i++) {
-        let isMatch = false
-        let name = cards[i].querySelector('.book__name').innerText
-        let author = cards[i].querySelector('.book__loginor').innerText
-        let about = cards[i].querySelector('.book__about').innerText
-
-
-        if (name.toLowerCase().includes(val)) {
-            isMatch = true
-            insertMark(name, name.toLowerCase().indexOf(val), val.length)
-        }
-        else if (author.toLowerCase().includes(val)) {
-            isMatch = true
-            insertMark(author, author.toLowerCase().indexOf(val), val.length)
-        }
-        else if (about.toLowerCase().includes(val)) {
-            isMatch = true
-            insertMark(about, about.toLowerCase().indexOf(val), val.length)
-        }
-
-        if (!isMatch) {
-            cards[i].classList.add('hide')
-        } else {
-            cards[i].classList.remove('hide')
-        }
-
+    if (!val) {
+        cards.forEach(card => {
+            card.style.display = '';
+            card.querySelector('.book__card__img').style.display = '';
+            removeHighlight(card);
+        });
+        return;
     }
 
-    // bookCardItems.forEach(function (card) {
+    let regex = new RegExp(val, 'i');
 
-    //     let blocks = card.querySelectorAll('p'); // Все текстовые блоки в карточке
-    //     let hasMatch = false; // Флаг для проверки наличия совпадений
+    cards.forEach(card => {
+        let name = card.querySelector('.book__name').innerText.toLowerCase();
+        let author = card.querySelector('.book__loginor').innerText.toLowerCase();
+        let about = card.querySelector('.book__about').innerText.toLowerCase();
+        let image = card.querySelector('.book__card__img');
 
-    //     blocks.forEach(function (block) {
-    //         let text = block.innerText.toLowerCase(); // Текст блока в нижнем регистре
+        if (regex.test(name) || regex.test(author) || regex.test(about)) {
+            card.style.display = '';
+            image.style.display = '';
+            highlightMatch(card.querySelector('.book__name'), regex);
+            highlightMatch(card.querySelector('.book__loginor'), regex);
+            highlightMatch(card.querySelector('.book__about'), regex);
+        } else {
+            card.style.display = 'none';
+            image.style.display = 'none';
+            removeHighlight(card);
+        }
+    });
+}, 300);
 
-    //         if (val !== '' && text.includes(val)) {
-    //             hasMatch = true; // Нашли совпадение
-    //             block.classList.remove('hide');
-
-    //             let startPos = text.indexOf(val); // Индекс найденного текста
-    //             block.innerHTML = insertMark(block.innerText, startPos, val.length);
-    //         } else {
-    //             // block.classList.add('hide');
-    //             block.innerHTML = block.innerText; // Восстанавливаем исходный текст
-    //         }
-    //     });
-
-    //     // Если совпадений нет ни в одном из блоков, скрываем всю карточку
-    //     if (hasMatch) {
-    //         card.classList.remove('hide');
-    //     } else {
-    //         card.classList.add('hide');
-    //     }
-    // });
-
-    // Если поле ввода пустое, показываем все карточки и блоки
-    // if (val === '') {
-    //     bookCardItems.forEach(function (card) {
-    //         card.classList.remove('hide');
-    //         let blocks = card.querySelectorAll('p');
-    //         blocks.forEach(function (block) {
-    //             block.classList.remove('hide');
-    //             block.innerHTML = block.innerText; // Восстанавливаем исходный текст
-    //         });
-    //     });
-    // }
-};
-
-function insertMark(string, pos, len) {
-    return (
-        string.slice(0, pos) +
-        '<mark>' +
-        string.slice(pos, pos + len) +
-        '</mark>' +
-        string.slice(pos + len)
-    );
+function highlightMatch(element, regex) {
+    if (!element) return;
+    const originalText = element.textContent;
+    const highlightedText = originalText.replace(regex, match => `<mark>${match}</mark>`);
+    element.innerHTML = highlightedText;
 }
 
+function removeHighlight(card) {
+    ['.book__name', '.book__loginor', '.book__about'].forEach(selector => {
+        const element = card.querySelector(selector);
+        if (element) {
+            element.innerHTML = element.textContent;
+        }
+    });
+}
+
+function debounce(func, wait) {
+    let timeout;
+    return function (...args) {
+        const context = this;
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(context, args), wait);
+    };
+}
 
 $(document).ready(function () {
     $('.addToPlans').click(function () {
@@ -95,4 +70,18 @@ $(document).ready(function () {
         localStorage.setItem('Plans', JSON.stringify(Plans));
         alert(`${bookName} добавлено в список "Хочу прочесть"`);
     });
-})
+});
+
+$(document).ready(function () {
+    $('.addToReadIt').click(function () {
+        const bookName = $(this).data('name');
+        const bookLoginor = $(this).data('loginor');
+        const bookImage = $(this).data('img');
+
+        let ReadIt = JSON.parse(localStorage.getItem('ReadIt')) || [];
+
+        ReadIt.push({ name: bookName, loginor: bookLoginor, img: bookImage });
+        localStorage.setItem('ReadIt', JSON.stringify(ReadIt));
+        alert(`${bookName} добавлено в список "Хочу прочесть"`);
+    });
+});
