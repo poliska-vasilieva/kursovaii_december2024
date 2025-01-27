@@ -7,6 +7,13 @@
 
 body {
     background-color: #F6F4F5;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh
+}
+
+main {
+    flex: 1;
 }
 
 .hide {
@@ -275,12 +282,11 @@ li {
     flex-direction: column;
 }
 
-.block-cover {
+#ReadIt, #Plans {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 50px;
 }
 
 .book__card {
@@ -290,7 +296,17 @@ li {
     background-color: #F2E8D3;
     padding: 40px;
     border-radius: 40px;
-    width: 100%;
+    /* width: 100%; */
+}
+
+.book__card__readit {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    background-color: #F2E8D3;
+    padding: 40px;
+    border-radius: 40px;
+    justify-content: center;
 }
 
 .img__book {
@@ -299,6 +315,12 @@ li {
 
 .book__card__info {
     color: #171717;
+}
+
+.book__card__info__readit {
+    color: #171717;
+    display: flex;
+    flex-direction: column;
 }
 
 .book__name {    

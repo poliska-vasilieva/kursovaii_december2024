@@ -3,15 +3,11 @@ $(document).ready(function () {
 
     Plans.forEach((item, index) => {
         $('#Plans').append(
-            `<div class="second-item">
-            <div class="block-cover">
-                <div class="book__card">
-                    <div class="book__card__info">
-                        <img src="img/${item.img}" class="img__book" alt="${item.name}"> ${item.name}
-                        <button class="removeFromPlans" data-index="${index}">Удалить</button>
-                    </div>
+            `<div class="book__card__readit">
+                <div class="book__card__info__readit">
+                    ${item.name} </br> ${item.loginor}
+                    <button class="removeFromPlans" data-index="${index}">Удалить</button>
                 </div>
-            </div>
             </div>`
         );
     });

@@ -27,40 +27,42 @@
             </div>
         </div>
     </header>
+    <main>
 
-    <section class="profile">
-        <div class="container">
-            <div class="prof__sod">
-                <h2>Ваш профиль, дорогой пользователь</h2>
-                <input type="text" id="username" placeholder="Имя" required>
-                <input type="email" id="email" placeholder="Email" required>
-                <input type="password" id="currentPassword" placeholder="Текущий пароль" required>
-                <input type="password" id="newPassword"
-                    placeholder="Новый пароль (оставьте пустым, если не хотите менять)">
-                <div>
-                    <button id="saveButton">Сохранить изменения</button>
-                    <button id="ButtonLogOut">Выйти</button>
+        <section class="profile">
+            <div class="container">
+                <div class="prof__sod">
+                    <h2>Ваш профиль, дорогой пользователь</h2>
+                    <input type="text" id="username" placeholder="Имя" required>
+                    <input type="email" id="email" placeholder="Email" required>
+                    <input type="password" id="currentPassword" placeholder="Текущий пароль" required>
+                    <input type="password" id="newPassword"
+                        placeholder="Новый пароль (оставьте пустым, если не хотите менять)">
+                    <div>
+                        <button id="saveButton">Сохранить изменения</button>
+                        <button id="ButtonLogOut">Выйти</button>
+                    </div>
+                    <a href="search.html" class="a__avt">Искать книги</a>
+                    <a href="readit.html" class="a__avt">Перейти в список прочитанных книг</a>
+                    <a href="plans.html" class="a__avt">Перейти в список запланированных книг</a>
                 </div>
-                <a href="search.html" class="a__avt">Искать книги</a>
-                <a href="readit.html" class="a__avt">Перейти в список прочитанных книг</a>
-                <a href="plans.html" class="a__avt">Перейти в список запланированных книг</a>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <script>
-        if (localStorage.getItem('currentUser')) {
-            MainSectionButtonLogOut();
-        }
+        <script>
+            if (localStorage.getItem('currentUser')) {
+                MainSectionButtonLogOut();
+            }
 
-        document.getElementById('ButtonLogOut').addEventListener('click', logoutUser);
-        function logoutUser() {
-            localStorage.removeItem('currentUser');
-            alert('Вы покинули нашу замечательную систему. До новых встреч. Вы же вернетесь, да?((');
-            window.location.href = '/login'
-        }
-    </script>
+            document.getElementById('ButtonLogOut').addEventListener('click', logoutUser);
+            function logoutUser() {
+                localStorage.removeItem('currentUser');
+                alert('Вы покинули нашу замечательную систему. До новых встреч. Вы же вернетесь, да?((');
+                window.location.href = '/login'
+            }
+        </script>
 
+    </main>
     <footer>
         <div class="container">
             <div class="footer__slide">
