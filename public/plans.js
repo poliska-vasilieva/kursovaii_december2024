@@ -13,7 +13,7 @@ $(document).ready(function () {
     });
 
     if (Plans.length === 0) {
-        $('#Plans').append('<p>Книги не добавлены</p>');
+        $('#Plans').append('<p class="noBook">Книги не добавлены</p>');
     }
 
     $('#Plans').on('click', '.removeFromPlans', function () {

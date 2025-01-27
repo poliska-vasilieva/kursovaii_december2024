@@ -13,7 +13,7 @@ $(document).ready(function () {
     });
 
     if (ReadIt.length === 0) {
-        $('#ReadIt').append('<p>Книги не добавлены</p>');
+        $('#ReadIt').append('<p class="noBook">Книги не добавлены</p>');
     }
 
     $('#ReadIt').on('click', '.removeFromReadIt', function () {
@@ -22,7 +22,8 @@ $(document).ready(function () {
 
         localStorage.setItem('ReadIt', JSON.stringify(ReadIt));
 
-        $(this).closest('li').remove();
+        $(this).closest('.book__card__readit').remove();
+
 
         if (ReadIt.length === 0) {
             $('#ReadIt').empty().append('<p>Книги не добавлены</p>');

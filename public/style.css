@@ -16,6 +16,12 @@ main {
     flex: 1;
 }
 
+.noBook {
+    font-size: 25px;
+    display: flex;
+    margin: 0 auto;
+}
+
 .hide {
     display: none;
 }
@@ -153,6 +159,13 @@ button:hover {
     flex-direction: row;
     align-items: center;
     justify-content: center;
+}
+
+.block-cover {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 40px;
 }
 
 .block__about__text {
