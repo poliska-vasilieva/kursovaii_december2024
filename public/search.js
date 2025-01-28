@@ -82,6 +82,6 @@ $(document).ready(function () {
 
         ReadIt.push({ name: bookName, loginor: bookLoginor, img: bookImage });
         localStorage.setItem('ReadIt', JSON.stringify(ReadIt));
-        alert(`${bookName} добавлено в список "Хочу прочесть"`);
+        alert(`${bookName} добавлено в список "Прочитано"`);
     });
 });

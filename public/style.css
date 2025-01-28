@@ -72,7 +72,7 @@ header {
 }
 
 .a__avt {
-    font-size: 17px;
+    font-size: 20px;
     color: #894334;
     text-decoration: none;
     margin-top: 15px;
@@ -166,6 +166,12 @@ button:hover {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 40px;
+}
+
+.links__list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .block__about__text {

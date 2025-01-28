@@ -33,7 +33,8 @@ document.getElementById('registerButton').addEventListener('click', () => {
             return;
         }
         if (response.status == 200) {
-            window.location.href = '/profile';
+            alert("Успешно");
+            // window.location.href = '/profile';
         }
     });
 });
